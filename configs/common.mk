@@ -16,7 +16,6 @@ PRODUCT_PACKAGES += \
     SuperSU \
     SwagPapers \
     Torch \
-    PerformanceControl \
     UnicornPorn
 
 # Use prebuilt su until fixed when built
