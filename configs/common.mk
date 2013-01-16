@@ -8,6 +8,7 @@ PRODUCT_PACKAGES += \
     AOKPtips \
     AppWidgetPicker \
     LatinImeDictionaryPack \
+    LockClock \
     Microbes \
     NovaLauncher \
     PerformanceControl \
@@ -15,7 +16,7 @@ PRODUCT_PACKAGES += \
     SuperSU \
     SwagPapers \
     Torch \
-    LockClock \
+    PerformanceControl \
     UnicornPorn
 
 # Use prebuilt su until fixed when built
