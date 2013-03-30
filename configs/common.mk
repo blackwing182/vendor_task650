@@ -19,7 +19,8 @@ PRODUCT_PACKAGES += \
     su \
     SwagPapers \
     Torch \
-    UnicornPorn
+    UnicornPorn\
+    CellBroadcastReceiver
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html \
