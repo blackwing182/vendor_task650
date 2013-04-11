@@ -13,12 +13,12 @@ PRODUCT_PACKAGES += \
     LockClock \
     Microbes \
     NovaLauncher \
-    PerformanceControl \
     ROMControl \
     Superuser \
     su \
     SwagPapers \
     Torch \
+    TricksterMod \
     UnicornPorn\
     CellBroadcastReceiver
 
