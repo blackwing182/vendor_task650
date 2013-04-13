@@ -9,8 +9,6 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/aokp/overlay/dictionaries
 PRODUCT_PACKAGES += \
     AOKPtips \
     AppWidgetPicker \
-    DSPManager \
-    libcyanogen-dsp \
     LatinImeDictionaryPack \
     LockClock \
     Microbes \
