@@ -5,7 +5,7 @@ debug=
 BUILD_ROOT=`pwd`
 cd $BUILD_ROOT
 if [ -z "$debug" ]; then
-    repo sync
+    repo sync -j36
     . build/envsetup.sh
 fi
 
