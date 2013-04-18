@@ -8,7 +8,7 @@ DATE=$(date +%h-%d-%y)
 LOG_DIR=logs
 BUILD_ROOT=`pwd`
 cd $BUILD_ROOT
-. build/envsetup.sh
+. build/envsetup.sh && time
 lunch $1
 
 TARGET_VENDOR=$(echo $TARGET_PRODUCT | cut -f1 -d '_')
