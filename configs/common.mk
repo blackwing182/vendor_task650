@@ -11,6 +11,7 @@ PRODUCT_PACKAGES += \
     AppWidgetPicker \
     LatinImeDictionaryPack \
     LockClock \
+    mGerrit \
     Microbes \
     NovaLauncher \
     ROMControl \
