@@ -13,7 +13,6 @@ PRODUCT_PACKAGES += \
     LockClock \
     mGerrit \
     Microbes \
-    NovaLauncher \
     ROMControl \
     Superuser \
     su \
