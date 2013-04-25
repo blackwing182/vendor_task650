@@ -13,6 +13,7 @@ PRODUCT_PACKAGES += \
     LockClock \
     mGerrit \
     Microbes \
+    PermissionsManager \
     ROMControl \
     Superuser \
     su \
