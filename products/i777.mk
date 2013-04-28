@@ -1,11 +1,11 @@
 # Inherit AOSP device configuration for galaxys2.
 $(call inherit-product, device/samsung/i777/full_i777.mk)
 
+# Inherit GSM common stuff.
+$(call inherit-product, vendor/aokp/configs/gsm.mk)
+
 # Inherit common product files.
 $(call inherit-product, vendor/aokp/configs/common.mk)
-
-# Inherit GSM common stuff
-$(call inherit-product, vendor/aokp/configs/gsm.mk)
 
 # SGS2 overlay
 PRODUCT_PACKAGE_OVERLAYS += vendor/aokp/overlay/s2-common
