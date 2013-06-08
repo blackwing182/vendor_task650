@@ -8,6 +8,7 @@ $(call inherit-product, vendor/aokp/configs/nfc_enhanced.mk)
 
 # Inherit some common stuff.
 $(call inherit-product, vendor/aokp/configs/common.mk)
+$(call inherit-product, vendor/aokp/configs/common_versions.mk)
 
 # Setup device specific product configuration.
 PRODUCT_NAME := aokp_jfltetmo
