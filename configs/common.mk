@@ -16,14 +16,14 @@ PRODUCT_PACKAGES += \
     Microbes \
     PermissionsManager \
     ROMControl \
+    Stk \
     Superuser \
     su \
     SwagPapers \
     Torch \
     TricksterMod \
     UnicornPorn \
-    CellBroadcastReceiver \
-    Babel 
+    CellBroadcastReceiver 
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html \
@@ -44,7 +44,6 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     vendor/aokp/prebuilt/common/lib/libmicrobes_jni.so:system/lib/libmicrobes_jni.so \
-    vendor/aokp/prebuilt/common/etc/apns-conf.xml:system/etc/apns-conf.xml \
     vendor/aokp/prebuilt/common/etc/resolv.conf:system/etc/resolv.conf
 
 # init.d
@@ -64,6 +63,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
 
 PRODUCT_PACKAGES += \
+    openvpn \
     e2fsck \
     fsck.exfat \
     libssh \
@@ -94,3 +94,7 @@ PRODUCT_COPY_FILES += packages/wallpapers/LivePicker/android.software.live_wallp
 
 # T-Mobile theme engine
 -include vendor/aokp/configs/themes_common.mk
+
+# World APNs
+PRODUCT_COPY_FILES += \
+    vendor/aokp/prebuilt/common/etc/apns-conf.xml:system/etc/apns-conf.xml
