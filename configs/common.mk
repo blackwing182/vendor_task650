@@ -20,10 +20,8 @@ PRODUCT_PACKAGES += \
     SwagPapers \
     Torch \
     TricksterMod \
-    UnicornPorn\
-    CellBroadcastReceiver
-
-# Optional packages
+    UnicornPorn \
+    CellBroadcastReceiver \
     Babel 
 
 PRODUCT_PROPERTY_OVERRIDES += \
