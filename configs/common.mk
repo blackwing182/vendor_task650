@@ -53,6 +53,10 @@ PRODUCT_COPY_FILES += \
     vendor/aokp/prebuilt/common/etc/sysctl.conf:system/etc/sysctl.conf \
     vendor/aokp/prebuilt/common/bin/sysinit:system/bin/sysinit
 
+# SELinux filesystem labels
+PRODUCT_COPY_FILES += \
+    vendor/cm/prebuilt/common/etc/init.d/50selinuxrelabel:system/etc/init.d/50selinuxrelabel
+
 # Enable SIP+VoIP on all targets
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
