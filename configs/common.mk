@@ -22,7 +22,7 @@ PRODUCT_PACKAGES += \
     TricksterMod \
     UnicornPorn \
     CellBroadcastReceiver \
-    VoicePlus 
+    Babel 
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html \
