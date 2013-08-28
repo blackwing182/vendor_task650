@@ -8,7 +8,7 @@ DATE=$(date +%h-%d-%y)
 LOG_DIR=logs
 BUILD_ROOT=`pwd`
 cd $BUILD_ROOT
-. build/envsetup.sh && time
+. build/envsetup.sh
 lunch $1
 
 TARGET_VENDOR=$(echo $TARGET_PRODUCT | cut -f1 -d '_')
@@ -47,41 +47,56 @@ fi
 
 # clean out of previous zip
 if [ "$BACON" = "true" ]; then
-    ZIP=$(basename $(tail -3 "$LOG_DIR"/"$TARGET_PRODUCT"_"$DATE"_bot.log | head -1 | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g" | cut -f3 -d ' '))
+    ZIP=$(basename $(tail -5 "$LOG_DIR"/"$TARGET_PRODUCT"_"$DATE"_bot.log | head -1 | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g" | cut -f2 -d ' '))
 else
     ZIP=$(basename $(grep "Package OTA" "$LOG_DIR"/"$TARGET_PRODUCT"_"$DATE"_bot.log | cut -f3 -d ' '))
 fi
 
-mkdir ../upload
-OUTD=$(echo $(cd ../upload && pwd))
-rm $OUTD/$ZIP
-if [ -n "$3" ]; then
-    NZIP="$TARGET_PRODUCT"_jb-mr1_"$3".zip
-    cp "$ANDROID_PRODUCT_OUT"/$ZIP $OUTD/$NZIP
-else
-    cp "$ANDROID_PRODUCT_OUT"/$ZIP $OUTD/$ZIP
-fi
-
-# finish
-echo "$2 build complete"
-
-# md5sum list
-cd $OUTD
-md5sum $ZIP | cat >> md5sum
-
-# upload
-echo "checking on upload reference file"
-
 BUILDBOT=$BUILD_ROOT/vendor/$TARGET_VENDOR/bot/
-cd $BUILDBOT
-if test -x upload ; then
-    echo "Upload file exists, executing now"
-    cp upload $OUTD
+
+# execute finishing scripts (md5, upload, etc) only if the build was successful (ie. actually produced a .zip)
+if [[ $ZIP == *.zip* ]]; then
+    # finish
+    echo "$2 build complete"
+    mkdir ../upload
+    OUTD=$(echo $(cd ../upload && pwd))
+    rm $OUTD/$ZIP
+    if [ -n "$3" ]; then
+        NZIP="$TARGET_PRODUCT"_jb-mr1_"$3".zip
+        cp "$ANDROID_PRODUCT_OUT"/$ZIP $OUTD/$NZIP
+    else
+        cp "$ANDROID_PRODUCT_OUT"/$ZIP $OUTD/$ZIP
+    fi
+
+    # md5sum list
     cd $OUTD
-    # device and zip names are passed on for upload
-    ./upload $2 $ZIP && rm upload
+    md5sum $ZIP | cat >> md5sum
+
+    # upload
+    echo "checking on upload reference file"
+
+    cd $BUILDBOT
+    if test -x upload ; then
+        echo "Upload file exists, executing now"
+        cp upload $OUTD
+        cd $OUTD
+        # device and zip names are passed on for upload
+        ./upload $2 $ZIP && rm upload
+    else
+        echo "No upload file found (or set to +x), build complete."
+    fi
+
 else
-    echo "No upload file found (or set to +x), build complete."
+    cd $BUILDBOT
+    if test -x report_fail ; then
+        ./report_fail $2
+    fi
+    echo "$2 build failed, exiting"
 fi
 
 cd $BUILD_ROOT
+
+# remove device specific out files to save space on SSD
+if [ "$SMALL_DISK" = 1 ]; then
+    rm -rf $ANDROID_PRODUCT_OUT
+fi
