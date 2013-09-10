@@ -1,8 +1,5 @@
 $(call inherit-product, device/samsung/jflteatt/full_jflteatt.mk)
 
-# Inherit some common stuff.
-$(call inherit-product, vendor/aokp/configs/gsm.mk)
-
 # Enhanced NFC
 $(call inherit-product, vendor/aokp/configs/nfc_enhanced.mk)
 
