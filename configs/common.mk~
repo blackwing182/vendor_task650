@@ -98,5 +98,3 @@ PRODUCT_COPY_FILES += packages/wallpapers/LivePicker/android.software.live_wallp
 # World APNs
 PRODUCT_COPY_FILES += \
     vendor/aokp/prebuilt/common/etc/apns-conf.xml:system/etc/apns-conf.xml
-
--include vendor/aokp/sepolicy/sepolicy.mk
